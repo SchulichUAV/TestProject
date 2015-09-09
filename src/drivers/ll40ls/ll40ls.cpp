@@ -464,6 +464,10 @@ ll40ls_main(int argc, char *argv[])
 
 		/* Start/load the driver. */
 		if (!strcmp(verb, "start")) {
+			if (g_dev != nullptr) {
+				warnx("driver already started");
+				exit(0);
+			}
 
 			ll40ls::start(use_i2c, bus);
 		}
